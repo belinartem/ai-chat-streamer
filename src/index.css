@@ -2,15 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
- * High-Performance AI Chat Design System
- * Dark-first, minimal, professional — inspired by Claude/ChatGPT
- * All colors in HSL for theming flexibility
- */
-
 @layer base {
   :root {
-    /* Light mode - clean, minimal */
     --background: 0 0% 100%;
     --foreground: 240 10% 10%;
 
@@ -20,7 +13,6 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 10%;
 
-    /* Primary: Subtle blue-gray for professional feel */
     --primary: 220 14% 20%;
     --primary-foreground: 0 0% 98%;
 
@@ -42,23 +34,19 @@
 
     --radius: 0.75rem;
 
-    /* Chat-specific tokens */
     --chat-bg: 0 0% 100%;
     --chat-user-bg: 220 14% 96%;
     --chat-assistant-bg: 0 0% 100%;
     --chat-input-bg: 0 0% 98%;
     --chat-border: 220 13% 91%;
-    
-    /* Code blocks */
+
     --code-bg: 220 14% 96%;
     --code-border: 220 13% 88%;
-    
-    /* Streaming indicator */
+
     --streaming-dot: 220 80% 55%;
   }
 
   .dark {
-    /* Dark mode - immersive, focused */
     --background: 220 16% 8%;
     --foreground: 220 14% 96%;
 
@@ -87,18 +75,15 @@
     --input: 220 14% 18%;
     --ring: 220 14% 70%;
 
-    /* Chat-specific tokens - dark */
     --chat-bg: 220 16% 8%;
     --chat-user-bg: 220 14% 14%;
     --chat-assistant-bg: 220 16% 8%;
     --chat-input-bg: 220 16% 11%;
     --chat-border: 220 14% 18%;
-    
-    /* Code blocks - dark */
+
     --code-bg: 220 14% 12%;
     --code-border: 220 14% 20%;
-    
-    /* Streaming indicator */
+
     --streaming-dot: 220 80% 65%;
   }
 }
@@ -110,10 +95,11 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
 
-  /* Custom scrollbar for chat - thin, unobtrusive */
   .chat-scrollbar::-webkit-scrollbar {
     width: 6px;
   }
@@ -133,10 +119,15 @@
 }
 
 @layer components {
-  /* Streaming cursor animation */
   @keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
   }
 
   .streaming-cursor::after {
@@ -146,10 +137,16 @@
     margin-left: 2px;
   }
 
-  /* Streaming dots animation */
   @keyframes pulse-dot {
-    0%, 100% { opacity: 0.4; transform: scale(0.8); }
-    50% { opacity: 1; transform: scale(1); }
+    0%,
+    100% {
+      opacity: 0.4;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   .streaming-dot {
@@ -163,8 +160,6 @@
   .streaming-dot:nth-child(3) {
     animation-delay: 0.4s;
   }
-
-  /* Code block styling */
   .prose-code pre {
     @apply rounded-lg border border-[hsl(var(--code-border))] bg-[hsl(var(--code-bg))] overflow-x-auto;
   }
@@ -173,25 +168,21 @@
     @apply text-sm leading-relaxed;
   }
 
-  /* Inline code */
   .prose-inline-code {
     @apply px-1.5 py-0.5 rounded bg-[hsl(var(--code-bg))] text-sm font-mono;
   }
 }
 
 @layer utilities {
-  /* Performance: GPU-accelerated transforms */
   .gpu-accelerate {
     transform: translateZ(0);
     will-change: transform;
   }
 
-  /* Prevent layout shift during streaming */
   .contain-layout {
     contain: layout style;
   }
 
-  /* Message entry animation */
   @keyframes message-in {
     from {
       opacity: 0;
