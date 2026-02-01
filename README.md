@@ -86,6 +86,26 @@ Preview the production build locally:
 npm run preview
 ```
 
+## 🐳 Docker
+
+Run the application in a Docker container:
+
+```bash
+# Build the Docker image
+docker build -t ai-chat-streamer:latest .
+
+# Run the container
+docker run -d -p 8080:80 --name ai-chat-app ai-chat-streamer:latest
+
+# Stop the container
+docker stop ai-chat-app
+
+# Start the container again
+docker start ai-chat-app
+```
+
+The application will be available at `http://localhost:8080`
+
 ## 🧪 Testing
 
 Run tests once:
